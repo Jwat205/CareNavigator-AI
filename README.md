@@ -55,6 +55,6 @@ CareNavigator AI is a full-stack healthcare intelligence platform that automates
 
 ### 1. **Clone the repository**
 ```bash
-git clone https://github.com/YOUR_USERNAME/CareNavigator-AI.git
+git clone https://github.com/Jwat205/CareNavigator-AI.git
 cd CareNavigator-AI
 
