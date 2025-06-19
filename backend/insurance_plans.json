@@ -1,0 +1,706 @@
+[
+  {
+    "id": "fl_001",
+    "name": "Florida Blue BlueOptions Bronze",
+    "type": "Individual",
+    "tier": "Bronze",
+    "description": "Affordable bronze-tier plan with essential health benefits and preventive care coverage. Good for young, healthy individuals who want protection against major medical expenses.",
+    "states": ["Florida"],
+    "coverage": [
+      "preventive care",
+      "emergency care",
+      "hospitalization",
+      "prescription drugs",
+      "mental health services",
+      "maternity care",
+      "pediatric services"
+    ],
+    "conditions": ["general wellness", "routine checkups"],
+    "min_age": 18,
+    "max_age": 64,
+    "family_plans": true,
+    "estimated_monthly_premium": {
+      "individual": 250,
+      "family": 750
+    },
+    "deductible": {
+      "individual": 7000,
+      "family": 14000
+    },
+    "out_of_pocket_max": {
+      "individual": 8700,
+      "family": 17400
+    },
+    "network": "Large statewide network",
+    "special_features": [
+      "Telehealth services",
+      "24/7 nurse hotline",
+      "Wellness programs"
+    ],
+    "eligibility": {
+      "income_range": "all",
+      "employment_status": ["employed", "self-employed", "unemployed"],
+      "citizenship": "US citizens and legal residents"
+    }
+  },
+  {
+    "id": "fl_002",
+    "name": "Florida Blue BlueOptions Silver",
+    "type": "Individual/Family",
+    "tier": "Silver",
+    "description": "Mid-tier plan offering balanced premium and out-of-pocket costs. Covers 70% of medical costs on average. Great for individuals and families who need regular medical care.",
+    "states": ["Florida"],
+    "coverage": [
+      "preventive care",
+      "emergency care",
+      "hospitalization",
+      "prescription drugs",
+      "specialist visits",
+      "mental health services",
+      "maternity care",
+      "pediatric services",
+      "vision care",
+      "dental care"
+    ],
+    "conditions": [
+      "diabetes",
+      "hypertension",
+      "asthma",
+      "heart disease",
+      "arthritis",
+      "chronic conditions"
+    ],
+    "min_age": 18,
+    "max_age": 64,
+    "family_plans": true,
+    "estimated_monthly_premium": {
+      "individual": 380,
+      "family": 1100
+    },
+    "deductible": {
+      "individual": 4500,
+      "family": 9000
+    },
+    "out_of_pocket_max": {
+      "individual": 8700,
+      "family": 17400
+    },
+    "network": "Large statewide network",
+    "special_features": [
+      "Telehealth services",
+      "Chronic care management",
+      "Diabetes support programs",
+      "Mental health resources"
+    ],
+    "eligibility": {
+      "income_range": "all",
+      "employment_status": ["employed", "self-employed", "unemployed"],
+      "citizenship": "US citizens and legal residents"
+    }
+  },
+  {
+    "id": "fl_003",
+    "name": "Aetna Better Health Gold",
+    "type": "Individual/Family",
+    "tier": "Gold",
+    "description": "Premium plan with low deductibles and comprehensive coverage. Covers 80% of medical costs. Ideal for those with ongoing health needs or chronic conditions.",
+    "states": ["Florida"],
+    "coverage": [
+      "preventive care",
+      "emergency care",
+      "hospitalization",
+      "prescription drugs",
+      "specialist visits",
+      "mental health services",
+      "substance abuse treatment",
+      "maternity care",
+      "pediatric services",
+      "vision care",
+      "dental care",
+      "physical therapy",
+      "occupational therapy",
+      "home health care"
+    ],
+    "conditions": [
+      "diabetes",
+      "hypertension",
+      "cancer",
+      "heart disease",
+      "kidney disease",
+      "liver disease",
+      "mental health disorders",
+      "chronic pain",
+      "autoimmune diseases"
+    ],
+    "min_age": 18,
+    "max_age": 64,
+    "family_plans": true,
+    "estimated_monthly_premium": {
+      "individual": 520,
+      "family": 1450
+    },
+    "deductible": {
+      "individual": 1500,
+      "family": 3000
+    },
+    "out_of_pocket_max": {
+      "individual": 8700,
+      "family": 17400
+    },
+    "network": "Large national network",
+    "special_features": [
+      "Telehealth services",
+      "Care coordination",
+      "Disease management programs",
+      "24/7 mental health support",
+      "Prescription delivery",
+      "Fitness programs"
+    ],
+    "eligibility": {
+      "income_range": "all",
+      "employment_status": ["employed", "self-employed", "unemployed"],
+      "citizenship": "US citizens and legal residents"
+    }
+  },
+  {
+    "id": "fl_004",
+    "name": "Humana Medicare Advantage Florida",
+    "type": "Medicare Advantage",
+    "tier": "Medicare",
+    "description": "Comprehensive Medicare Advantage plan for Florida seniors with additional benefits beyond Original Medicare. Includes prescription drug coverage and wellness programs.",
+    "states": ["Florida"],
+    "coverage": [
+      "hospitalization",
+      "physician services",
+      "prescription drugs",
+      "preventive care",
+      "emergency care",
+      "urgent care",
+      "lab tests",
+      "imaging services",
+      "durable medical equipment",
+      "vision care",
+      "dental care",
+      "hearing aids",
+      "transportation services"
+    ],
+    "conditions": [
+      "diabetes",
+      "hypertension",
+      "heart disease",
+      "copd",
+      "arthritis",
+      "osteoporosis",
+      "kidney disease",
+      "alzheimer",
+      "parkinson",
+      "chronic conditions"
+    ],
+    "min_age": 65,
+    "max_age": null,
+    "family_plans": false,
+    "estimated_monthly_premium": {
+      "individual": 45,
+      "family": null
+    },
+    "deductible": {
+      "individual": 0,
+      "family": null
+    },
+    "out_of_pocket_max": {
+      "individual": 6700,
+      "family": null
+    },
+    "network": "Florida-wide Medicare network",
+    "special_features": [
+      "Telehealth services",
+      "Wellness programs",
+      "Fitness membership",
+      "Meal delivery",
+      "Transportation to appointments",
+      "Over-the-counter allowance",
+      "Chronic care management"
+    ],
+    "eligibility": {
+      "income_range": "all",
+      "employment_status": ["retired", "disabled"],
+      "citizenship": "US citizens and legal residents",
+      "medicare_eligible": true
+    }
+  },
+  {
+    "id": "fl_005",
+    "name": "Florida KidCare",
+    "type": "Children's Health",
+    "tier": "State Program",
+    "description": "State-sponsored health insurance program for Florida children from birth to age 18. Provides comprehensive coverage for families who don't qualify for Medicaid but can't afford private insurance.",
+    "states": ["Florida"],
+    "coverage": [
+      "preventive care",
+      "well-child visits",
+      "immunizations",
+      "physician services",
+      "hospitalization",
+      "emergency care",
+      "prescription drugs",
+      "mental health services",
+      "dental care",
+      "vision care",
+      "hearing services",
+      "therapy services",
+      "medical equipment"
+    ],
+    "conditions": [
+      "asthma",
+      "diabetes",
+      "adhd",
+      "autism",
+      "developmental delays",
+      "chronic conditions",
+      "behavioral health"
+    ],
+    "min_age": 0,
+    "max_age": 18,
+    "family_plans": true,
+    "estimated_monthly_premium": {
+      "individual": 20,
+      "family": 35
+    },
+    "deductible": {
+      "individual": 0,
+      "family": 0
+    },
+    "out_of_pocket_max": {
+      "individual": 0,
+      "family": 0
+    },
+    "network": "Statewide pediatric network",
+    "special_features": [
+      "School-based services",
+      "Early intervention",
+      "Developmental screenings",
+      "Behavioral health support",
+      "Care coordination"
+    ],
+    "eligibility": {
+      "income_range": "low to moderate",
+      "employment_status": ["all"],
+      "citizenship": "US citizens and legal residents",
+      "income_limit": "200% of Federal Poverty Level"
+    }
+  },
+  {
+    "id": "fl_006",
+    "name": "Molina Healthcare Florida Medicaid",
+    "type": "Medicaid Managed Care",
+    "tier": "Medicaid",
+    "description": "Managed care plan for Florida Medicaid recipients. Provides comprehensive healthcare services for low-income individuals and families, pregnant women, and people with disabilities.",
+    "states": ["Florida"],
+    "coverage": [
+      "physician services",
+      "hospitalization",
+      "emergency care",
+      "prescription drugs",
+      "preventive care",
+      "maternity care",
+      "pediatric services",
+      "mental health services",
+      "substance abuse treatment",
+      "home health care",
+      "nursing home care",
+      "transportation services",
+      "vision care",
+      "dental care"
+    ],
+    "conditions": [
+      "diabetes",
+      "hypertension",
+      "asthma",
+      "mental health disorders",
+      "substance abuse",
+      "pregnancy",
+      "disabilities",
+      "chronic conditions"
+    ],
+    "min_age": 0,
+    "max_age": null,
+    "family_plans": true,
+    "estimated_monthly_premium": {
+      "individual": 0,
+      "family": 0
+    },
+    "deductible": {
+      "individual": 0,
+      "family": 0
+    },
+    "out_of_pocket_max": {
+      "individual": 0,
+      "family": 0
+    },
+    "network": "Medicaid provider network",
+    "special_features": [
+      "Care coordination",
+      "Health education",
+      "Disease management",
+      "Transportation assistance",
+      "24/7 nurse hotline",
+      "Member rewards program"
+    ],
+    "eligibility": {
+      "income_range": "low",
+      "employment_status": ["all"],
+      "citizenship": "US citizens and legal residents",
+      "medicaid_eligible": true
+    }
+  },
+  {
+    "id": "fl_007",
+    "name": "Oscar Health Florida Simple",
+    "type": "Individual/Family",
+    "tier": "Silver",
+    "description": "Technology-forward health plan with user-friendly app and virtual care options. Designed for tech-savvy individuals who want convenient, modern healthcare access.",
+    "states": ["Florida"],
+    "coverage": [
+      "preventive care",
+      "emergency care",
+      "hospitalization",
+      "prescription drugs",
+      "specialist visits",
+      "mental health services",
+      "maternity care",
+      "pediatric services",
+      "telehealth services",
+      "urgent care",
+      "lab tests",
+      "imaging services"
+    ],
+    "conditions": [
+      "diabetes",
+      "hypertension",
+      "asthma",
+      "anxiety",
+      "depression",
+      "chronic conditions"
+    ],
+    "min_age": 18,
+    "max_age": 64,
+    "family_plans": true,
+    "estimated_monthly_premium": {
+      "individual": 350,
+      "family": 980
+    },
+    "deductible": {
+      "individual": 3500,
+      "family": 7000
+    },
+    "out_of_pocket_max": {
+      "individual": 8700,
+      "family": 17400
+    },
+    "network": "Growing Florida network",
+    "special_features": [
+      "Oscar app with virtual care",
+      "Free generic medications",
+      "Step tracking rewards",
+      "Concierge teams",
+      "Simple cost estimates",
+      "24/7 telemedicine"
+    ],
+    "eligibility": {
+      "income_range": "all",
+      "employment_status": ["employed", "self-employed", "unemployed"],
+      "citizenship": "US citizens and legal residents"
+    }
+  },
+  {
+    "id": "fl_008",
+    "name": "Cigna Healthcare Florida Connect",
+    "type": "Individual/Family",
+    "tier": "Bronze",
+    "description": "Network-focused plan offering quality care through Cigna's established provider network. Emphasizes preventive care and wellness programs.",
+    "states": ["Florida"],
+    "coverage": [
+      "preventive care",
+      "emergency care",
+      "hospitalization",
+      "prescription drugs",
+      "mental health services",
+      "maternity care",
+      "pediatric services",
+      "rehabilitation services"
+    ],
+    "conditions": [
+      "diabetes",
+      "heart disease",
+      "respiratory conditions",
+      "musculoskeletal disorders"
+    ],
+    "min_age": 18,
+    "max_age": 64,
+    "family_plans": true,
+    "estimated_monthly_premium": {
+      "individual": 280,
+      "family": 820
+    },
+    "deductible": {
+      "individual": 6500,
+      "family": 13000
+    },
+    "out_of_pocket_max": {
+      "individual": 8700,
+      "family": 17400
+    },
+    "network": "Cigna national network",
+    "special_features": [
+      "Wellness coaching",
+      "Diabetes prevention program",
+      "Tobacco cessation support",
+      "Virtual care options",
+      "Health risk assessments"
+    ],
+    "eligibility": {
+      "income_range": "all",
+      "employment_status": ["employed", "self-employed", "unemployed"],
+      "citizenship": "US citizens and legal residents"
+    }
+  },
+  {
+    "id": "fl_009",
+    "name": "Florida Blue Catastrophic Plan",
+    "type": "Catastrophic",
+    "tier": "Catastrophic",
+    "description": "Low-premium, high-deductible plan for young adults under 30 or those with hardship exemptions. Covers essential health benefits after deductible is met.",
+    "states": ["Florida"],
+    "coverage": [
+      "preventive care",
+      "emergency care",
+      "hospitalization",
+      "prescription drugs",
+      "mental health services",
+      "maternity care"
+    ],
+    "conditions": ["emergency conditions", "major medical events"],
+    "min_age": 18,
+    "max_age": 29,
+    "family_plans": false,
+    "estimated_monthly_premium": {
+      "individual": 180,
+      "family": null
+    },
+    "deductible": {
+      "individual": 8700,
+      "family": null
+    },
+    "out_of_pocket_max": {
+      "individual": 8700,
+      "family": null
+    },
+    "network": "Florida Blue network",
+    "special_features": [
+      "Three free primary care visits before deductible",
+      "Preventive care at no cost",
+      "Low monthly premium",
+      "Protection against major medical costs"
+    ],
+    "eligibility": {
+      "income_range": "all",
+      "employment_status": ["employed", "self-employed", "unemployed"],
+      "citizenship": "US citizens and legal residents",
+      "age_restriction": "Under 30 or hardship exemption"
+    }
+  },
+  {
+    "id": "fl_010",
+    "name": "UnitedHealthcare Florida Choice",
+    "type": "Individual/Family",
+    "tier": "Gold",
+    "description": "Comprehensive gold-tier plan with extensive provider network and additional wellness benefits. Ideal for individuals and families who want premium coverage with lower out-of-pocket costs.",
+    "states": ["Florida"],
+    "coverage": [
+      "preventive care",
+      "emergency care",
+      "hospitalization",
+      "prescription drugs",
+      "specialist visits",
+      "mental health services",
+      "substance abuse treatment",
+      "maternity care",
+      "pediatric services",
+      "vision care",
+      "dental care",
+      "chiropractic care",
+      "acupuncture",
+      "physical therapy",
+      "occupational therapy"
+    ],
+    "conditions": [
+      "diabetes",
+      "hypertension",
+      "cancer",
+      "heart disease",
+      "stroke",
+      "kidney disease",
+      "mental health disorders",
+      "chronic pain",
+      "autoimmune diseases",
+      "neurological disorders"
+    ],
+    "min_age": 18,
+    "max_age": 64,
+    "family_plans": true,
+    "estimated_monthly_premium": {
+      "individual": 480,
+      "family": 1350
+    },
+    "deductible": {
+      "individual": 2000,
+      "family": 4000
+    },
+    "out_of_pocket_max": {
+      "individual": 8700,
+      "family": 17400
+    },
+    "network": "UnitedHealth national network",
+    "special_features": [
+      "Virtual visits",
+      "Wellness programs",
+      "Health savings account compatible",
+      "Nurse hotline",
+      "Health coaching",
+      "Chronic condition support",
+      "Prescription home delivery"
+    ],
+    "eligibility": {
+      "income_range": "all",
+      "employment_status": ["employed", "self-employed", "unemployed"],
+      "citizenship": "US citizens and legal residents"
+    }
+  },
+  {
+    "id": "fl_011",
+    "name": "Florida Blue BlueOptions Platinum",
+    "type": "Individual/Family",
+    "tier": "Platinum",
+    "description": "Premium platinum-tier plan with the lowest out-of-pocket costs and most comprehensive coverage. Best for those with significant healthcare needs or chronic conditions.",
+    "states": ["Florida"],
+    "coverage": [
+      "preventive care",
+      "emergency care",
+      "hospitalization",
+      "prescription drugs",
+      "specialist visits",
+      "mental health services",
+      "substance abuse treatment",
+      "maternity care",
+      "pediatric services",
+      "vision care",
+      "dental care",
+      "hearing aids",
+      "physical therapy",
+      "occupational therapy",
+      "speech therapy",
+      "home health care",
+      "hospice care",
+      "durable medical equipment"
+    ],
+    "conditions": [
+      "diabetes",
+      "hypertension",
+      "cancer",
+      "heart disease",
+      "stroke",
+      "kidney disease",
+      "liver disease",
+      "mental health disorders",
+      "chronic pain",
+      "autoimmune diseases",
+      "neurological disorders",
+      "rare diseases"
+    ],
+    "min_age": 18,
+    "max_age": 64,
+    "family_plans": true,
+    "estimated_monthly_premium": {
+      "individual": 650,
+      "family": 1800
+    },
+    "deductible": {
+      "individual": 500,
+      "family": 1000
+    },
+    "out_of_pocket_max": {
+      "individual": 4000,
+      "family": 8000
+    },
+    "network": "Florida Blue comprehensive network",
+    "special_features": [
+      "Concierge services",
+      "Advanced care management",
+      "Specialist access",
+      "24/7 virtual care",
+      "Comprehensive wellness programs",
+      "Disease-specific support programs",
+      "Priority appointment scheduling"
+    ],
+    "eligibility": {
+      "income_range": "all",
+      "employment_status": ["employed", "self-employed", "unemployed"],
+      "citizenship": "US citizens and legal residents"
+    }
+  },
+  {
+    "id": "fl_012",
+    "name": "Bright Health Florida Focus",
+    "type": "Individual/Family",
+    "tier": "Silver",
+    "description": "Innovative health plan focusing on integrated care delivery and member experience. Partners with local health systems to provide coordinated care.",
+    "states": ["Florida"],
+    "coverage": [
+      "preventive care",
+      "emergency care",
+      "hospitalization",
+      "prescription drugs",
+      "specialist visits",
+      "mental health services",
+      "maternity care",
+      "pediatric services",
+      "telehealth services",
+      "urgent care"
+    ],
+    "conditions": [
+      "diabetes",
+      "hypertension",
+      "asthma",
+      "mental health disorders",
+      "chronic conditions"
+    ],
+    "min_age": 18,
+    "max_age": 64,
+    "family_plans": true,
+    "estimated_monthly_premium": {
+      "individual": 320,
+      "family": 920
+    },
+    "deductible": {
+      "individual": 3000,
+      "family": 6000
+    },
+    "out_of_pocket_max": {
+      "individual": 8700,
+      "family": 17400
+    },
+    "network": "Integrated local health systems",
+    "special_features": [
+      "Care teams",
+      "Integrated care delivery",
+      "Member advocacy",
+      "Digital health tools",
+      "Community health partnerships"
+    ],
+    "eligibility": {
+      "income_range": "all",
+      "employment_status": ["employed", "self-employed", "unemployed"],
+      "citizenship": "US citizens and legal residents"
+    }
+  }
+]

@@ -1,0 +1,66 @@
+# Ignore Python cache and virtualenvs
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+*.onnx
+*.npz
+*.npy
+
+# Ignore virtual environments
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+*.env
+
+# Ignore data, models, and output (edit as needed)
+data/
+datasets/
+models/models/
+outputs/
+results/
+checkpoints/
+runs/
+
+# Ignore Jupyter notebooks (if not needed in production)
+*.ipynb
+.ipynb_checkpoints/
+
+# Ignore config and secret files (don’t put secrets in your image!)
+*.env
+*.secret
+*.key
+*.pem
+
+# Ignore Docker and build output
+*.log
+*.bak
+*.tmp
+*.swp
+*.DS_Store
+*.idea/
+*.vscode/
+build/
+dist/
+*.egg-info/
+coverage/
+htmlcov/
+.cache/
+.mypy_cache/
+pytest_cache/
+.tox/
+
+# Ignore git and other VCS
+.git
+.gitignore
+.gitattributes
+
+# (Optional) Ignore requirements not needed in Docker context
+requirements-dev.txt
