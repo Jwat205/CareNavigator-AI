@@ -31,12 +31,11 @@ CareNavigator AI is a full-stack healthcare intelligence platform that automates
 
 ## 🖼️ Screenshots
 
-<!-- Replace these with your actual screenshots if available -->
-![CareNavigator AI UI - Insurance Match](![Screenshot (69)](https://github.com/user-attachments/assets/560887da-7560-42c5-852f-a27eef38270f))
+![Screenshot (69)](https://github.com/user-attachments/assets/560887da-7560-42c5-852f-a27eef38270f)
 
 
 
-![CareNavigator AI UI - AutoML Upload](![Predictor](https://github.com/user-attachments/assets/f18b3f4e-757f-40c8-9832-06d23ec5d178))
+![Predictor](https://github.com/user-attachments/assets/60c79fb0-b4f4-4b04-bd3a-29f770ed0381)
 
 ---
 
