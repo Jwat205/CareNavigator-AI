@@ -1,0 +1,22 @@
+{
+    "disease_name": "heart_disease",
+    "target_column": "disease",
+    "drop_columns": [
+        "patient_id"
+    ],
+    "categorical_columns": [
+        "sex",
+        "smoking_status",
+        "disease"
+    ],
+    "numerical_columns": [
+        "age",
+        "bmi",
+        "systolic_bp",
+        "diastolic_bp",
+        "cholesterol"
+    ],
+    "model_type": "XGBoost",
+    "model_path": "models/heart_disease",
+    "data_path": "uploads\\covid19_binary.csv"
+}

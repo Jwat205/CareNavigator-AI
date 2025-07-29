@@ -1,0 +1,33 @@
+{
+    "disease_name": "hepatomegaly",
+    "target_column": "Status",
+    "drop_columns": [
+        "ID"
+    ],
+    "categorical_columns": [
+        "Status",
+        "Drug",
+        "Sex",
+        "Ascites",
+        "Hepatomegaly",
+        "Spiders",
+        "Edema"
+    ],
+    "numerical_columns": [
+        "N_Days",
+        "Age",
+        "Bilirubin",
+        "Cholesterol",
+        "Albumin",
+        "Copper",
+        "Alk_Phos",
+        "SGOT",
+        "Tryglicerides",
+        "Platelets",
+        "Prothrombin",
+        "Stage"
+    ],
+    "model_type": "XGBoost",
+    "model_path": "models/hepatomegaly",
+    "data_path": "uploads\\cirrhosis.csv"
+}

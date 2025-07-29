@@ -1,0 +1,26 @@
+{
+    "disease_name": "cardio",
+    "target_column": "cardio",
+    "drop_columns": [
+        "id"
+    ],
+    "categorical_columns": [
+        "gender",
+        "cholesterol",
+        "gluc",
+        "smoke",
+        "alco",
+        "active",
+        "cardio"
+    ],
+    "numerical_columns": [
+        "age",
+        "height",
+        "weight",
+        "ap_hi",
+        "ap_lo"
+    ],
+    "model_type": "XGBoost",
+    "model_path": "models/cardio",
+    "data_path": "uploads\\cardio_train.csv"
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "name": "HealthPlus Basic",
+    "description": "Basic healthcare coverage for individuals and families",
+    "states": [
+      "Florida",
+      "Georgia",
+      "Alabama"
+    ],
+    "coverage": [
+      "doctor visits",
+      "prescription drugs",
+      "emergency care"
+    ],
+    "conditions": [
+      "diabetes",
+      "hypertension"
+    ],
+    "min_age": 18,
+    "max_age": 65,
+    "monthly_premium": 180,
+    "family_plans": true
+  },
+  {
+    "name": "MediCare Premium",
+    "description": "Comprehensive healthcare with specialist coverage",
+    "states": [
+      "Florida",
+      "Texas",
+      "California"
+    ],
+    "coverage": [
+      "specialist visits",
+      "surgery",
+      "mental health",
+      "dental"
+    ],
+    "conditions": [
+      "cancer",
+      "heart disease",
+      "diabetes"
+    ],
+    "min_age": 25,
+    "monthly_premium": 350,
+    "family_plans": true
+  },
+  {
+    "name": "Budget Health",
+    "description": "Affordable basic coverage for young adults",
+    "states": [
+      "Florida",
+      "North Carolina",
+      "Virginia"
+    ],
+    "coverage": [
+      "emergency care",
+      "preventive care"
+    ],
+    "conditions": [],
+    "min_age": 18,
+    "max_age": 30,
+    "monthly_premium": 120,
+    "family_plans": false
+  }
+]

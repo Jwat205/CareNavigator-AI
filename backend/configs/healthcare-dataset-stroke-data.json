@@ -1,0 +1,25 @@
+{
+    "disease_name": "stroke",
+    "target_column": "stroke",
+    "drop_columns": [
+        "id"
+    ],
+    "categorical_columns": [
+        "gender",
+        "ever_married",
+        "work_type",
+        "Residence_type",
+        "smoking_status",
+        "stroke"
+    ],
+    "numerical_columns": [
+        "age",
+        "hypertension",
+        "heart_disease",
+        "avg_glucose_level",
+        "bmi"
+    ],
+    "model_type": "XGBoost",
+    "model_path": "models/stroke",
+    "data_path": "uploads\\healthcare-dataset-stroke-data.csv"
+}
