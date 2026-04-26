@@ -105,8 +105,10 @@ class OptimizedModelCache:
                 from utils import load_model_and_features
                 
                 # This runs the disk read without blocking the server!
-                model, features = await loop.run_in_executor(
-                    None, load_model_and_features, model_name
+                # New, senior-level way
+                model, features = await asyncio.wait_for(
+                model_cache.load_model_async(disease), 
+                timeout=2.0
                 )
                 
                 self._models[model_name] = (model, features)
