@@ -74,43 +74,51 @@ class SimpleCache:
         self._cache[cache_key] = summary
 
 # OPTIMIZED MODEL CACHE
+#Old busy waiting way( Lacks concurrency Property)
+#class OptimizedModelCache:
+ #   def __init__(self):
+  #      self._models = {}
+   #     self._loading_locks = {}  # Prevent multiple simultaneous loads
+    #    self.load_times = {}  # Track load performance
 class OptimizedModelCache:
     def __init__(self):
         self._models = {}
-        self._loading_locks = {}  # Prevent multiple simultaneous loads
-        self.load_times = {}  # Track load performance
-    
-    def load_model_sync(self, model_name: str):
-        """Optimized synchronous model loading with performance tracking"""
+        self._loading_events = {}   Now using events for software interrupts
+        self.load_times = {}
+  
+    async def load_model_async(self, model_name: str):
         if model_name not in self._models:
-            # Prevent multiple simultaneous loads of same model
-            if model_name in self._loading_locks:
-                # Wait for other load to complete
-                while model_name in self._loading_locks:
-                    time.sleep(0.1)
-                return self._models.get(model_name)
             
+            # 1. If another request is currently loading, wait for the EVENT
+            if model_name in self._loading_events:
+                await self._loading_events[model_name].wait() 
+                return self._models.get(model_name)
+                
             try:
-                self._loading_locks[model_name] = True
+                # 2. We are the first request. Create the event pager.
+                self._loading_events[model_name] = asyncio.Event()
+                
                 start_time = time.time()
                 
-                model, features = load_model_and_features(model_name)
+                # 3. Offload the heavy Disk I/O to a background thread
+                loop = asyncio.get_event_loop()
+                from utils import load_model_and_features
+                
+                # This runs the disk read without blocking the server!
+                model, features = await loop.run_in_executor(
+                    None, load_model_and_features, model_name
+                )
+                
                 self._models[model_name] = (model, features)
+                self.load_times[model_name] = time.time() - start_time
+                logging.info(f"✅ Loaded model: {model_name} (No blocking!)")
                 
-                load_time = time.time() - start_time
-                self.load_times[model_name] = load_time
-                
-                logging.info(f"✅ Loaded model: {model_name} in {load_time:.2f}s")
-                
-            except Exception as e:
-                logging.error(f"❌ Failed to load model {model_name}: {e}")
-                raise
             finally:
-                # Always remove lock
-                if model_name in self._loading_locks:
-                    del self._loading_locks[model_name]
-                    
-        return self._models[model_name]
+                # 4. Trigger the Software Interrupt! 
+                self._loading_events[model_name].set() 
+                del self._loading_events[model_name]
+                
+        return self._models.get(model_name)
     
     def get_model_sync(self, model_name: str):
         return self._models.get(model_name)
