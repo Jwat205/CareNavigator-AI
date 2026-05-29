@@ -315,9 +315,9 @@ async def run_comprehensive_concurrency_test(base_url: str, concurrent_users: in
     if not await test_api_connectivity(base_url):
         print("\n❌ API connectivity test failed. Please start your API first.")
         return
-    
+
     print()
-    
+
     # Define all endpoints (excluding upload-and-train for bulk testing)
     endpoints = [
         {"endpoint": "/", "method": "GET"},
@@ -334,32 +334,36 @@ async def run_comprehensive_concurrency_test(base_url: str, concurrent_users: in
         {"endpoint": "/cache/stats", "method": "GET"},
         {"endpoint": "/models/heart_disease/metadata", "method": "GET"},
     ]
-    
+
     print(f"🚀 COMPREHENSIVE CONCURRENCY TEST")
     print(f"Testing {len(endpoints)} endpoints with {concurrent_users} concurrent users each")
     print(f"Target: {base_url}")
     print("=" * 70)
-    
-    # Setup HTTP session with optimized settings
+
+    # One persistent session shared across warmup AND all tests
     connector = aiohttp.TCPConnector(
         limit=concurrent_users * 2,
         limit_per_host=concurrent_users * 2,
         ttl_dns_cache=300,
-        keepalive_timeout=30
+        keepalive_timeout=60,   # keep connections alive between endpoint tests
     )
-    
-    timeout = aiohttp.ClientTimeout(total=30)
-    
+
     async with aiohttp.ClientSession(
         connector=connector,
-        timeout=timeout,
+        timeout=aiohttp.ClientTimeout(total=30),
         headers={"Content-Type": "application/json"}
     ) as session:
-        
+
+        # Warmup: establish the full connection pool INSIDE the real session
+        print(f"🔥 Warming up {concurrent_users} connections...")
+        warmup_tasks = [make_get_request(session, f"{base_url}/health", i) for i in range(concurrent_users)]
+        await asyncio.gather(*warmup_tasks)
+        print("✅ Connection pool ready\n")
+
         all_results = []
         total_start_time = time.time()
-        
-        # Test each endpoint
+
+        # Test each endpoint (connections already established — no cold-start penalty)
         for i, endpoint_config in enumerate(endpoints, 1):
             print(f"📋 Test {i}/{len(endpoints)}: {endpoint_config['method']} {endpoint_config['endpoint']}")
             

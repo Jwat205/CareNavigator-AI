@@ -14,7 +14,6 @@ import shap
 import numpy as np
 from pathlib import Path
 from autogluon.tabular import TabularPredictor
-from transformers import pipeline
 from dotenv import load_dotenv
 from utils import load_model_and_features
 from auto_config_generator import generate_config_dict_from_csv
@@ -29,6 +28,8 @@ from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+import asyncio
+from contextlib import asynccontextmanager
 
 # Windows-compatible optimizations
 from collections import Counter
@@ -83,44 +84,37 @@ class SimpleCache:
 class OptimizedModelCache:
     def __init__(self):
         self._models = {}
-        self._loading_events = {}   Now using events for software interrupts
+        self._loading_events = {}  # Now using events for software interrupts
         self.load_times = {}
   
     async def load_model_async(self, model_name: str):
         if model_name not in self._models:
-            
-            # 1. If another request is currently loading, wait for the EVENT
             if model_name in self._loading_events:
-                await self._loading_events[model_name].wait() 
+                await self._loading_events[model_name].wait()
                 return self._models.get(model_name)
-                
+
             try:
-                # 2. We are the first request. Create the event pager.
                 self._loading_events[model_name] = asyncio.Event()
-                
                 start_time = time.time()
-                
-                # 3. Offload the heavy Disk I/O to a background thread
                 loop = asyncio.get_event_loop()
-                from utils import load_model_and_features
-                
-                # This runs the disk read without blocking the server!
-                # New, senior-level way
-                model, features = await asyncio.wait_for(
-                model_cache.load_model_async(disease), 
-                timeout=2.0
-                )
-                
-                self._models[model_name] = (model, features)
+                await loop.run_in_executor(None, self.load_model, model_name)
                 self.load_times[model_name] = time.time() - start_time
                 logging.info(f"✅ Loaded model: {model_name} (No blocking!)")
-                
             finally:
-                # 4. Trigger the Software Interrupt! 
-                self._loading_events[model_name].set() 
+                self._loading_events[model_name].set()
                 del self._loading_events[model_name]
-                
+
         return self._models.get(model_name)
+
+    def load_model(self, model_name: str):
+        """Synchronous model load — called from thread pool and startup preloading."""
+        from utils import load_model_and_features
+        model, features = load_model_and_features(model_name)
+        self._models[model_name] = (model, features)
+        return model, features
+
+    def load_model_sync(self, model_name: str):
+        return self.load_model(model_name)
     
     def get_model_sync(self, model_name: str):
         return self._models.get(model_name)
@@ -308,40 +302,42 @@ models_dir = Path(BASE_DIR) / "models"
 load_dotenv()
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
-# Create FastAPI app
-app = FastAPI(
-    title="CareNavigator AI",
-    description="Healthcare Risk Prediction Platform - Windows Optimized",
-    version="1.0.0"
-)
+_predict_semaphore: asyncio.Semaphore
 
-# Add performance middleware
-app.add_middleware(PerformanceMiddleware)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    global _predict_semaphore
+    _predict_semaphore = asyncio.Semaphore(8)
 
-@app.on_event("startup")
-async def aggressive_startup():
-    """Aggressively preload everything for maximum speed"""
-    logging.info("🚀 AGGRESSIVE STARTUP MODE")
-    
-    # Preload all models in parallel with timeout
+    logging.info("Startup: preloading models")
     available_models = get_available_models()
-    
+
     async def safe_preload(model_info):
         try:
             model_name = model_info["folder_name"]
             await asyncio.wait_for(
-                asyncio.get_event_loop().run_in_executor(
-                    None, model_cache.load_model, model_name
-                ), timeout=5.0
+                asyncio.get_event_loop().run_in_executor(None, model_cache.load_model, model_name),
+                timeout=5.0
             )
-            logging.info(f"✅ Preloaded: {model_name}")
-        except:
-            logging.warning(f"⚠️ Skipped: {model_name}")
-    
-    # Load all models in parallel
+            logging.info(f"Preloaded: {model_name}")
+        except Exception:
+            logging.warning(f"Skipped preload: {model_info['folder_name']}")
+
     await asyncio.gather(*[safe_preload(m) for m in available_models], return_exceptions=True)
-    
-    logging.info("🎉 AGGRESSIVE STARTUP COMPLETE")
+    logging.info("Startup complete")
+    yield
+    logging.info("Shutdown")
+
+# Create FastAPI app
+app = FastAPI(
+    title="CareNavigator AI",
+    description="Healthcare Risk Prediction Platform - Windows Optimized",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+# Add performance middleware
+app.add_middleware(PerformanceMiddleware)
 # --- INSURANCE PLANS LOADER ---
 def load_insurance_plans():
     try:
@@ -353,9 +349,9 @@ def load_insurance_plans():
 
 insurance_plans = load_insurance_plans()
 
-# --- NLP Pipelines ---
-ner_pipeline = pipeline("ner", model="dslim/bert-base-NER", aggregation_strategy="simple")
-summarizer = pipeline("summarization", model="t5-small")
+# NLP pipelines — loaded lazily on demand, not at startup
+ner_pipeline = None
+summarizer = None
 
 # --- REQUEST MODELS ---
 try:
@@ -626,22 +622,48 @@ class SummaryRequest(BaseModel):
     raw_text: str
 
 # --- UTILITY FUNCTIONS ---
+_models_cache: dict = {"result": None, "ts": 0.0}
+_MODELS_CACHE_TTL = 10.0  # seconds
+
+class ResponseCache:
+    """Caches the full response dict for a given key for `ttl` seconds.
+    Collapses concurrent stampedes — the first caller computes, the rest wait."""
+    def __init__(self, ttl: float = 1.0):
+        self._store: dict = {}   # key → (payload, timestamp)
+        self._ttl = ttl
+
+    def get(self, key: str):
+        entry = self._store.get(key)
+        if entry and (time.monotonic() - entry[1]) < self._ttl:
+            return entry[0]
+        return None
+
+    def set(self, key: str, value):
+        self._store[key] = (value, time.monotonic())
+
+_resp_cache = ResponseCache(ttl=1.0)        # 1-second TTL for health/status/metrics
+_meta_cache = ResponseCache(ttl=10.0)       # 10-second TTL for file-backed metadata
+
 def get_available_models():
-    """Get list of available trained models"""
+    """Get list of available trained models — result cached for 10s to avoid repeated disk I/O."""
+    now = time.monotonic()
+    if _models_cache["result"] is not None and (now - _models_cache["ts"]) < _MODELS_CACHE_TTL:
+        return _models_cache["result"]
+
     if not models_dir.exists():
         return []
-    
+
     available_models = []
     for disease_dir in models_dir.iterdir():
         if disease_dir.is_dir():
             config_file = disease_dir / "config.json"
             fields_file = disease_dir / "input_fields.json"
-            
+
             if config_file.exists() and fields_file.exists():
                 try:
                     with open(fields_file, "r") as f:
                         fields_data = json.load(f)
-                    
+
                     available_models.append({
                         "disease_name": fields_data.get("disease_name", disease_dir.name),
                         "folder_name": disease_dir.name,
@@ -650,8 +672,14 @@ def get_available_models():
                     })
                 except Exception as e:
                     logging.warning(f"Error loading metadata for {disease_dir.name}: {e}")
-    
-    return sorted(available_models, key=lambda x: x["disease_name"])
+
+    result = sorted(available_models, key=lambda x: x["disease_name"])
+    _models_cache["result"] = result
+    _models_cache["ts"] = now
+    return result
+
+def invalidate_models_cache():
+    _models_cache["result"] = None
 
 @app.middleware("http")
 async def performance_boost_middleware(request: Request, call_next):
@@ -675,19 +703,19 @@ async def performance_boost_middleware(request: Request, call_next):
 # ============================
 
 # --- ENDPOINT 1: HOME ---
+_ROOT_PAYLOAD = {"message": "CareNavigator AI is running", "version": "1.0.0", "optimized": True, "platform": "Windows Compatible"}
+
 @app.get("/")
-def root():
-    return {
-        "message": "CareNavigator AI is running", 
-        "version": "1.0.0", 
-        "optimized": True,
-        "platform": "Windows Compatible"
-    }
+async def root():
+    return _ROOT_PAYLOAD
 
 # --- ENDPOINT 2: HEALTH CHECK ---
 @app.get("/health")
-def health_check():
-    return {
+async def health_check():
+    cached = _resp_cache.get("health")
+    if cached is not None:
+        return cached
+    result = {
         "status": "healthy",
         "timestamp": time.time(),
         "metrics": dict(metrics),
@@ -696,10 +724,12 @@ def health_check():
         "cached_models": len(model_cache._models),
         "cache_size": len(cache_service._cache)
     }
+    _resp_cache.set("health", result)
+    return result
 
 # --- ENDPOINT 3: STATUS ---
 @app.get("/status")
-def detailed_status():
+async def detailed_status():
     return {
         "application": "CareNavigator AI",
         "status": "operational",
@@ -711,89 +741,36 @@ def detailed_status():
             "cached_models": len(model_cache._models)
         },
         "request_metrics": dict(metrics),
-        "models": {
-            "total_available": len(get_available_models()),
-            "cached": list(model_cache._models.keys())
-        }
+        "models": {"total_available": len(get_available_models()), "cached": list(model_cache._models.keys())}
     }
 
 # --- ENDPOINT 4: MODELS ---
 @app.get("/models")
-def get_models():
+async def get_models():
     try:
         models = get_available_models()
-        return {
-            "available_models": models,
-            "count": len(models),
-            "cached_models": list(model_cache._models.keys()),
-            "cache_available": cache_service.available
-        }
+        return {"available_models": models, "count": len(models), "cached_models": list(model_cache._models.keys()), "cache_available": cache_service.available}
     except Exception as e:
         logging.error(f"Error getting available models: {e}")
         raise HTTPException(status_code=500, detail=f"Error retrieving models: {e}")
 
-# --- ENDPOINT 5: OPTIMIZED PREDICTION ---
+# --- ENDPOINT 5: PREDICTION ---
 @app.post("/predict")
-async def emergency_predict_fix(req: ModelRequest):
-    """Emergency fix for predict endpoint - must be under 1 second"""
-    start_time = time.perf_counter()
-    
+async def predict(req: ModelRequest):
+    if _predict_semaphore._value == 0:
+        raise HTTPException(status_code=429, detail="Server busy — too many concurrent predictions, retry shortly")
     try:
-        # HARD TIMEOUT - prevent any request from taking > 5 seconds
-        async def timeout_predict():
-            # Simple prediction with minimal processing
-            disease = req.disease
-            inputs = req.inputs
-            
-            # Skip model loading if it takes too long
-            try:
-                # Set a 2-second timeout for model loading
-                model, features = await asyncio.wait_for(
-                    asyncio.get_event_loop().run_in_executor(
-                        None, model_cache.load_model, disease
-                    ), timeout=2.0
-                )
-            except asyncio.TimeoutError:
-                # Fallback: return a fake prediction
-                return {
-                    "prediction": "0" if "heart" in disease.lower() else "1",
-                    "status": "fast_mode",
-                    "response_time_ms": 50,
-                    "cached": True,
-                    "note": "Using fast prediction mode"
-                }
-            
-            # Quick prediction
-            row = {feature: inputs.get(feature, 0) for feature in features[:5]}  # Only use first 5 features
-            df = pd.DataFrame([row])
-            prediction = model.predict(df)
-            
-            return {
-                "prediction": str(prediction.iloc[0] if hasattr(prediction, 'iloc') else prediction),
-                "status": "success",
-                "response_time_ms": round((time.perf_counter() - start_time) * 1000, 2)
-            }
-        
-        # Execute with timeout
-        result = await asyncio.wait_for(timeout_predict(), timeout=3.0)
-        return result
-        
+        async with _predict_semaphore:
+            loop = asyncio.get_event_loop()
+            result = await asyncio.wait_for(
+                loop.run_in_executor(None, model_cache.predict_with_cache, req.disease, req.inputs),
+                timeout=30.0
+            )
+            return result
     except asyncio.TimeoutError:
-        # Emergency fallback - always return something fast
-        return {
-            "prediction": "0",
-            "status": "timeout_fallback", 
-            "response_time_ms": 100,
-            "cached": True,
-            "note": "Emergency fast response"
-        }
+        raise HTTPException(status_code=504, detail="Prediction timed out after 30s")
     except Exception as e:
-        return {
-            "prediction": "0",
-            "status": "error_fallback",
-            "response_time_ms": 50,
-            "error": str(e)
-        }
+        raise HTTPException(status_code=500, detail=str(e))
 
 # --- ENDPOINT 6: OPTIMIZED INSURANCE MATCHING ---
 @app.post("/insurance-match/")
@@ -857,45 +834,38 @@ def reload_plans():
 
 # --- ENDPOINT 9: UPDATE REGISTRY ---
 @app.post("/update-registry")
-def update_model_registry():
+async def update_model_registry():
     try:
-        # Simple registry update
         models = get_available_models()
-        return {
-            "message": "Model registry updated successfully",
-            "models_found": len(models),
-            "models": [m["disease_name"] for m in models]
-        }
+        return {"message": "Model registry updated successfully", "models_found": len(models), "models": [m["disease_name"] for m in models]}
     except Exception as e:
         logging.error(f"Error updating model registry: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to update registry: {e}")
 
 # --- ENDPOINT 10: METRICS ---
 @app.get("/metrics")
-def get_metrics():
-    return {
+async def get_metrics():
+    cached = _resp_cache.get("metrics")
+    if cached is not None:
+        return cached
+    result = {
         "request_metrics": dict(metrics),
         "available_models": get_available_models(),
-        "cache_info": {
-            "cached_items": len(cache_service._cache),
-            "cached_models": len(model_cache._models),
-            "available": cache_service.available
-        },
+        "cache_info": {"cached_items": len(cache_service._cache), "cached_models": len(model_cache._models), "available": cache_service.available},
         "timestamp": datetime.now().isoformat()
     }
+    _resp_cache.set("metrics", result)
+    return result
 
 # --- ENDPOINT 11: CACHE CLEAR ---
 @app.post("/cache/clear")
-def clear_cache():
+async def clear_cache():
     cache_service._cache.clear()
-    return {
-        "message": "Cache cleared successfully",
-        "cache_size": len(cache_service._cache)
-    }
+    return {"message": "Cache cleared successfully", "cache_size": len(cache_service._cache)}
 
 # --- ENDPOINT 12: CACHE STATS ---
 @app.get("/cache/stats")
-def get_cache_stats():
+async def get_cache_stats():
     return {
         "cache_type": "in-memory",
         "cache_size": len(cache_service._cache),
@@ -905,10 +875,12 @@ def get_cache_stats():
     }
 
 @app.get("/models/{disease_name}/metadata")
-def get_model_metadata_endpoint(disease_name: str):
-    """Get metadata for a specific disease model - FIXED VERSION"""
+async def get_model_metadata_endpoint(disease_name: str):
+    cached = _meta_cache.get(disease_name)
+    if cached is not None:
+        return cached
     try:
-        logging.info(f"🔍 Getting metadata for: {disease_name}")
+        logging.info(f"Getting metadata for: {disease_name}")
         
         # Normalize disease name to folder format
         disease_folder_name = disease_name.replace(" ", "_").lower()
@@ -1005,13 +977,14 @@ def get_model_metadata_endpoint(disease_name: str):
             "model_files": bool(list(disease_folder.glob("**/*.pkl")) or list(disease_folder.glob("**/*.json")))
         }
         
-        logging.info(f"✅ Successfully loaded metadata for {disease_name}")
+        logging.info(f"Successfully loaded metadata for {disease_name}")
+        _meta_cache.set(disease_name, metadata)
         return metadata
-        
+
     except HTTPException:
         raise
     except Exception as e:
-        logging.error(f"❌ Error loading metadata for {disease_name}: {e}")
+        logging.error(f"Error loading metadata for {disease_name}: {e}")
         raise HTTPException(status_code=500, detail=f"Error loading model metadata: {str(e)}")
 
 @app.get("/debug/metadata/{disease_name}")
@@ -1047,12 +1020,15 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(CONFIG_DIR, exist_ok=True)
 
 from concurrent.futures import ThreadPoolExecutor
-import asyncio
-executor = ThreadPoolExecutor()
+executor = ThreadPoolExecutor(max_workers=8)
 
 @app.post("/upload-and-train")
-async def upload_and_train(file: UploadFile = File(...)):
-    print(f"✅ Received file: {file.filename}")
+async def upload_and_train(
+    file: UploadFile = File(...),
+    time_limit: int = 600,
+    presets: str = "best_quality"
+):
+    logging.info(f"Received file: {file.filename}")
     if not file.filename.endswith('.csv'):
         raise HTTPException(status_code=400, detail="Please upload a CSV file.")
 
@@ -1062,15 +1038,17 @@ async def upload_and_train(file: UploadFile = File(...)):
         f.write(contents)
 
     try:
-        config = generate_config_dict_from_csv(csv_path)
+        loop = asyncio.get_event_loop()
+        config = await loop.run_in_executor(executor, generate_config_dict_from_csv, csv_path)
+        config["time_limit"] = time_limit
+        config["presets"] = presets
         config_name = os.path.splitext(file.filename)[0] + ".json"
         config_path = os.path.join(CONFIG_DIR, config_name)
         with open(config_path, "w") as f:
             json.dump(config, f, indent=4)
 
-        # 🔥 Off-load the blocking training to a thread
-        loop = asyncio.get_event_loop()
         train_summary = await loop.run_in_executor(executor, train_with_autogluon, config_path)
+        invalidate_models_cache()
 
         return {
             "csv_path": csv_path,
