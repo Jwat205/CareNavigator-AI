@@ -144,10 +144,20 @@ def get_model_metadata(disease_key: str):
     
     return metadata
 
-def validate_prediction_inputs(disease_key: str, inputs: dict):
+class StrictValidationError(ValueError):
+    """Raised when strict=True and required features are missing from the request."""
+    def __init__(self, missing_fields):
+        self.missing_fields = missing_fields
+        super().__init__(f"Missing required features (strict mode): {missing_fields}")
+
+
+def validate_prediction_inputs(disease_key: str, inputs: dict, strict: bool = False):
     """
     Validate and prepare inputs for prediction based on the model's requirements.
     Enhanced error handling and type conversion.
+
+    If strict=True, any required feature missing from `inputs` (absent, None, or "")
+    raises StrictValidationError instead of being silently filled with a smart default.
     """
     try:
         logging.info(f"🔍 Starting input validation for {disease_key}")
@@ -209,12 +219,18 @@ def validate_prediction_inputs(disease_key: str, inputs: dict):
                 
                 logging.debug(f"📝 Missing {col}: filled with default {default_value}")
         
+        if strict and missing_features:
+            logging.warning(f"🚫 Strict validation failed for {disease_key}: missing {missing_features}")
+            raise StrictValidationError(missing_features)
+
         logging.info(f"✅ Input validation complete")
         logging.info(f"📊 Final row: {len(row)} features")
         logging.info(f"📝 Missing features filled: {len(missing_features)}")
-        
+
         return row, missing_features, expected_inputs
-        
+
+    except StrictValidationError:
+        raise
     except Exception as e:
         logging.error(f"❌ Error validating inputs for {disease_key}: {e}")
         raise ValueError(f"Error validating inputs for {disease_key}: {str(e)}")
