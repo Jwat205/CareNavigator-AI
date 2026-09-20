@@ -1,0 +1,165 @@
+{
+  "summary": {
+    "total_requests": 13500,
+    "successful_requests": 12000,
+    "failed_requests": 1500,
+    "overall_success_rate": 88.88888888888889,
+    "unique_endpoints": 9,
+    "max_concurrent_users": "500"
+  },
+  "performance_metrics": {
+    "health_check": {
+      "total_requests": 1500,
+      "successful_requests": 1500,
+      "success_rate": 100.0,
+      "avg_response_time": 124.3380005333334,
+      "median_response_time": 69.27254999999866,
+      "p95_response_time": 325.9334200000012,
+      "p99_response_time": 405.50270699999845,
+      "min_response_time": 54.885800000000984,
+      "max_response_time": 688.6103000000005,
+      "std_response_time": 95.06700499144026
+    },
+    "root": {
+      "total_requests": 1500,
+      "successful_requests": 1500,
+      "success_rate": 100.0,
+      "avg_response_time": 128.6451274666669,
+      "median_response_time": 71.3603999999961,
+      "p95_response_time": 348.8148299999956,
+      "p99_response_time": 393.1237599999963,
+      "min_response_time": 56.65310000000545,
+      "max_response_time": 644.8249000000033,
+      "std_response_time": 99.88149193942392
+    },
+    "metrics": {
+      "total_requests": 1500,
+      "successful_requests": 1500,
+      "success_rate": 100.0,
+      "avg_response_time": 159.20907566666645,
+      "median_response_time": 72.21225000002107,
+      "p95_response_time": 413.44675499997976,
+      "p99_response_time": 445.53957200000895,
+      "min_response_time": 55.65740000000119,
+      "max_response_time": 739.0493000000049,
+      "std_response_time": 129.19765990936412
+    },
+    "list_models": {
+      "total_requests": 1500,
+      "successful_requests": 1500,
+      "success_rate": 100.0,
+      "avg_response_time": 151.97432813333336,
+      "median_response_time": 76.30275000001063,
+      "p95_response_time": 392.46267500001295,
+      "p99_response_time": 439.52219300000024,
+      "min_response_time": 60.24349999998435,
+      "max_response_time": 732.0324000000085,
+      "std_response_time": 121.94882701134341
+    },
+    "update_registry": {
+      "total_requests": 1500,
+      "successful_requests": 1500,
+      "success_rate": 100.0,
+      "avg_response_time": 154.7898741999998,
+      "median_response_time": 114.96505000000923,
+      "p95_response_time": 373.5329049999905,
+      "p99_response_time": 421.17954699997284,
+      "min_response_time": 56.37450000000399,
+      "max_response_time": 674.8752999999965,
+      "std_response_time": 106.24305606454143
+    },
+    "insurance_match": {
+      "total_requests": 1500,
+      "successful_requests": 1500,
+      "success_rate": 100.0,
+      "avg_response_time": 191.25878226666634,
+      "median_response_time": 78.66699999999582,
+      "p95_response_time": 478.42935499999726,
+      "p99_response_time": 513.6345239999696,
+      "min_response_time": 58.91449999995757,
+      "max_response_time": 772.4038000000064,
+      "std_response_time": 153.84194572686758
+    },
+    "summarize_text": {
+      "total_requests": 1500,
+      "successful_requests": 1500,
+      "success_rate": 100.0,
+      "avg_response_time": 218.93102360000043,
+      "median_response_time": 105.4245999999921,
+      "p95_response_time": 563.7133049999874,
+      "p99_response_time": 621.8831929999925,
+      "min_response_time": 60.7663000000116,
+      "max_response_time": 830.7300999999825,
+      "std_response_time": 184.1777544536909
+    },
+    "reload_plans": {
+      "total_requests": 1500,
+      "successful_requests": 1500,
+      "success_rate": 100.0,
+      "avg_response_time": 183.36107566666598,
+      "median_response_time": 100.01130000000558,
+      "p95_response_time": 472.8951050000177,
+      "p99_response_time": 505.1563090000115,
+      "min_response_time": 55.81300000000056,
+      "max_response_time": 747.8441000000089,
+      "std_response_time": 147.34992576768045
+    }
+  },
+  "resume_validation": {
+    "health_check": {
+      "sub_100ms_rate": 64.86666666666666,
+      "meets_sub_100ms_claim": "False",
+      "max_concurrent_handled": "500",
+      "handles_1000_concurrent": "False"
+    },
+    "root": {
+      "sub_100ms_rate": 65.0,
+      "meets_sub_100ms_claim": "False",
+      "max_concurrent_handled": "500",
+      "handles_1000_concurrent": "False"
+    },
+    "metrics": {
+      "sub_100ms_rate": 58.4,
+      "meets_sub_100ms_claim": "False",
+      "max_concurrent_handled": "500",
+      "handles_1000_concurrent": "False"
+    },
+    "list_models": {
+      "sub_100ms_rate": 62.46666666666667,
+      "meets_sub_100ms_claim": "False",
+      "max_concurrent_handled": "500",
+      "handles_1000_concurrent": "False"
+    },
+    "update_registry": {
+      "sub_100ms_rate": 39.86666666666667,
+      "meets_sub_100ms_claim": "False",
+      "max_concurrent_handled": "500",
+      "handles_1000_concurrent": "False"
+    },
+    "insurance_match": {
+      "sub_100ms_rate": 57.53333333333334,
+      "meets_sub_100ms_claim": "False",
+      "max_concurrent_handled": "500",
+      "handles_1000_concurrent": "False"
+    },
+    "summarize_text": {
+      "sub_100ms_rate": 49.46666666666666,
+      "meets_sub_100ms_claim": "False",
+      "max_concurrent_handled": "500",
+      "handles_1000_concurrent": "False"
+    },
+    "reload_plans": {
+      "sub_100ms_rate": 49.93333333333334,
+      "meets_sub_100ms_claim": "False",
+      "max_concurrent_handled": "500",
+      "handles_1000_concurrent": "False"
+    },
+    "overall": {
+      "sub_100ms_rate": 55.94166666666667,
+      "meets_sub_100ms_claim": "False",
+      "max_concurrent_tested": "500",
+      "handles_1000_concurrent": "False",
+      "overall_success_rate": 88.88888888888889
+    }
+  }
+}

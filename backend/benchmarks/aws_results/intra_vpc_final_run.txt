@@ -1,0 +1,6 @@
+Hitting http://172.31.36.77:8000/health (500 requests per concurrency level)
+concurrency=   1 total=500 errors=0 avg=    0.7ms p50=    0.7ms p95=    0.8ms p99=    0.9ms sub100ms=100.0%
+concurrency=  10 total=500 errors=0 avg=    2.5ms p50=    2.2ms p95=    3.9ms p99=    7.0ms sub100ms=100.0%
+concurrency=  50 total=500 errors=0 avg=   17.4ms p50=   16.7ms p95=   28.8ms p99=   30.6ms sub100ms=100.0%
+concurrency= 100 total=500 errors=0 avg=   34.2ms p50=    1.9ms p95=  174.9ms p99=  179.3ms sub100ms= 81.4%
+concurrency= 500 total=500 errors=0 avg=  167.4ms p50=  163.9ms p95=  221.1ms p99=  226.5ms sub100ms= 11.2%

@@ -1,0 +1,367 @@
+2026-09-19 21:46:39,223 - INFO - Starting comprehensive benchmark suite...
+2026-09-19 21:46:39,224 - INFO - 
+=== Testing endpoint: health_check ===
+2026-09-19 21:46:39,224 - INFO - Testing with 1 concurrent users...
+2026-09-19 21:46:39,226 - INFO - Starting load test: health_check - 1 concurrent, 500 total
+2026-09-19 21:46:40,407 - INFO - Completed 500/500 requests for health_check
+2026-09-19 21:46:40,416 - INFO -   Success Rate: 100.0%
+2026-09-19 21:46:40,417 - INFO -   Avg Response: 2.27ms
+2026-09-19 21:46:40,417 - INFO -   P95 Response: 4.06ms
+2026-09-19 21:46:40,417 - INFO -   P99 Response: 7.44ms
+2026-09-19 21:46:40,417 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:46:42,423 - INFO - Testing with 10 concurrent users...
+2026-09-19 21:46:42,425 - INFO - Starting load test: health_check - 10 concurrent, 500 total
+2026-09-19 21:46:42,885 - INFO - Completed 500/500 requests for health_check
+2026-09-19 21:46:42,886 - INFO -   Success Rate: 100.0%
+2026-09-19 21:46:42,886 - INFO -   Avg Response: 7.86ms
+2026-09-19 21:46:42,888 - INFO -   P95 Response: 18.98ms
+2026-09-19 21:46:42,888 - INFO -   P99 Response: 64.83ms
+2026-09-19 21:46:42,888 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:46:44,899 - INFO - Testing with 50 concurrent users...
+2026-09-19 21:46:44,902 - INFO - Starting load test: health_check - 50 concurrent, 500 total
+2026-09-19 21:46:45,365 - INFO - Completed 500/500 requests for health_check
+2026-09-19 21:46:45,368 - INFO -   Success Rate: 100.0%
+2026-09-19 21:46:45,368 - INFO -   Avg Response: 36.33ms
+2026-09-19 21:46:45,369 - INFO -   P95 Response: 145.27ms
+2026-09-19 21:46:45,369 - INFO -   P99 Response: 156.05ms
+2026-09-19 21:46:45,369 - INFO -   Sub-100ms Rate: 90.0%
+2026-09-19 21:46:47,380 - INFO - Testing with 100 concurrent users...
+2026-09-19 21:46:47,384 - INFO - Starting load test: health_check - 100 concurrent, 500 total
+2026-09-19 21:46:47,866 - INFO - Completed 500/500 requests for health_check
+2026-09-19 21:46:47,869 - INFO -   Success Rate: 100.0%
+2026-09-19 21:46:47,869 - INFO -   Avg Response: 70.66ms
+2026-09-19 21:46:47,869 - INFO -   P95 Response: 176.87ms
+2026-09-19 21:46:47,869 - INFO -   P99 Response: 188.16ms
+2026-09-19 21:46:47,869 - INFO -   Sub-100ms Rate: 81.0%
+2026-09-19 21:46:49,876 - INFO - Testing with 500 concurrent users...
+2026-09-19 21:46:49,877 - INFO - Starting load test: health_check - 500 concurrent, 500 total
+2026-09-19 21:46:50,531 - INFO - Completed 500/500 requests for health_check
+2026-09-19 21:46:50,534 - INFO -   Success Rate: 100.0%
+2026-09-19 21:46:50,534 - INFO -   Avg Response: 403.33ms
+2026-09-19 21:46:50,534 - INFO -   P95 Response: 554.65ms
+2026-09-19 21:46:50,534 - INFO -   P99 Response: 558.29ms
+2026-09-19 21:46:50,534 - INFO -   Sub-100ms Rate: 0.0%
+2026-09-19 21:46:52,544 - INFO - 
+=== Testing endpoint: root ===
+2026-09-19 21:46:52,544 - INFO - Testing with 1 concurrent users...
+2026-09-19 21:46:52,546 - INFO - Starting load test: root - 1 concurrent, 500 total
+2026-09-19 21:46:53,794 - INFO - Completed 500/500 requests for root
+2026-09-19 21:46:53,797 - INFO -   Success Rate: 100.0%
+2026-09-19 21:46:53,797 - INFO -   Avg Response: 2.43ms
+2026-09-19 21:46:53,797 - INFO -   P95 Response: 5.70ms
+2026-09-19 21:46:53,797 - INFO -   P99 Response: 16.17ms
+2026-09-19 21:46:53,797 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:46:55,812 - INFO - Testing with 10 concurrent users...
+2026-09-19 21:46:55,814 - INFO - Starting load test: root - 10 concurrent, 500 total
+2026-09-19 21:46:56,279 - INFO - Completed 500/500 requests for root
+2026-09-19 21:46:56,281 - INFO -   Success Rate: 100.0%
+2026-09-19 21:46:56,281 - INFO -   Avg Response: 7.82ms
+2026-09-19 21:46:56,281 - INFO -   P95 Response: 18.09ms
+2026-09-19 21:46:56,281 - INFO -   P99 Response: 42.97ms
+2026-09-19 21:46:56,281 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:46:58,284 - INFO - Testing with 50 concurrent users...
+2026-09-19 21:46:58,286 - INFO - Starting load test: root - 50 concurrent, 500 total
+2026-09-19 21:46:58,820 - INFO - Completed 500/500 requests for root
+2026-09-19 21:46:58,823 - INFO -   Success Rate: 100.0%
+2026-09-19 21:46:58,823 - INFO -   Avg Response: 43.12ms
+2026-09-19 21:46:58,823 - INFO -   P95 Response: 144.16ms
+2026-09-19 21:46:58,823 - INFO -   P99 Response: 158.53ms
+2026-09-19 21:46:58,824 - INFO -   Sub-100ms Rate: 91.0%
+2026-09-19 21:47:00,833 - INFO - Testing with 100 concurrent users...
+2026-09-19 21:47:00,836 - INFO - Starting load test: root - 100 concurrent, 500 total
+2026-09-19 21:47:01,400 - INFO - Completed 500/500 requests for root
+2026-09-19 21:47:01,402 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:01,402 - INFO -   Avg Response: 83.12ms
+2026-09-19 21:47:01,402 - INFO -   P95 Response: 194.42ms
+2026-09-19 21:47:01,402 - INFO -   P99 Response: 203.36ms
+2026-09-19 21:47:01,402 - INFO -   Sub-100ms Rate: 80.2%
+2026-09-19 21:47:03,410 - INFO - Testing with 500 concurrent users...
+2026-09-19 21:47:03,412 - INFO - Starting load test: root - 500 concurrent, 500 total
+2026-09-19 21:47:03,981 - INFO - Completed 500/500 requests for root
+2026-09-19 21:47:03,982 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:03,983 - INFO -   Avg Response: 310.54ms
+2026-09-19 21:47:03,983 - INFO -   P95 Response: 397.21ms
+2026-09-19 21:47:03,983 - INFO -   P99 Response: 397.72ms
+2026-09-19 21:47:03,983 - INFO -   Sub-100ms Rate: 0.0%
+2026-09-19 21:47:05,983 - INFO - 
+=== Testing endpoint: metrics ===
+2026-09-19 21:47:05,984 - INFO - Testing with 1 concurrent users...
+2026-09-19 21:47:05,991 - INFO - Starting load test: metrics - 1 concurrent, 500 total
+2026-09-19 21:47:07,602 - INFO - Completed 500/500 requests for metrics
+2026-09-19 21:47:07,606 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:07,606 - INFO -   Avg Response: 3.14ms
+2026-09-19 21:47:07,606 - INFO -   P95 Response: 5.59ms
+2026-09-19 21:47:07,606 - INFO -   P99 Response: 7.72ms
+2026-09-19 21:47:07,606 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:47:09,602 - INFO - Testing with 10 concurrent users...
+2026-09-19 21:47:09,603 - INFO - Starting load test: metrics - 10 concurrent, 500 total
+2026-09-19 21:47:10,037 - INFO - Completed 500/500 requests for metrics
+2026-09-19 21:47:10,041 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:10,041 - INFO -   Avg Response: 7.38ms
+2026-09-19 21:47:10,041 - INFO -   P95 Response: 20.01ms
+2026-09-19 21:47:10,041 - INFO -   P99 Response: 30.95ms
+2026-09-19 21:47:10,041 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:47:12,040 - INFO - Testing with 50 concurrent users...
+2026-09-19 21:47:12,042 - INFO - Starting load test: metrics - 50 concurrent, 500 total
+2026-09-19 21:47:12,677 - INFO - Completed 500/500 requests for metrics
+2026-09-19 21:47:12,679 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:12,679 - INFO -   Avg Response: 52.64ms
+2026-09-19 21:47:12,679 - INFO -   P95 Response: 188.34ms
+2026-09-19 21:47:12,679 - INFO -   P99 Response: 211.52ms
+2026-09-19 21:47:12,680 - INFO -   Sub-100ms Rate: 89.2%
+2026-09-19 21:47:14,692 - INFO - Testing with 100 concurrent users...
+2026-09-19 21:47:14,695 - INFO - Starting load test: metrics - 100 concurrent, 500 total
+2026-09-19 21:47:15,195 - INFO - Completed 500/500 requests for metrics
+2026-09-19 21:47:15,197 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:15,197 - INFO -   Avg Response: 74.89ms
+2026-09-19 21:47:15,198 - INFO -   P95 Response: 209.77ms
+2026-09-19 21:47:15,198 - INFO -   P99 Response: 215.32ms
+2026-09-19 21:47:15,198 - INFO -   Sub-100ms Rate: 80.0%
+2026-09-19 21:47:17,207 - INFO - Testing with 500 concurrent users...
+2026-09-19 21:47:17,210 - INFO - Starting load test: metrics - 500 concurrent, 500 total
+2026-09-19 21:47:17,738 - INFO - Completed 500/500 requests for metrics
+2026-09-19 21:47:17,740 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:17,740 - INFO -   Avg Response: 251.67ms
+2026-09-19 21:47:17,740 - INFO -   P95 Response: 344.24ms
+2026-09-19 21:47:17,740 - INFO -   P99 Response: 344.66ms
+2026-09-19 21:47:17,740 - INFO -   Sub-100ms Rate: 0.0%
+2026-09-19 21:47:19,761 - INFO - 
+=== Testing endpoint: list_models ===
+2026-09-19 21:47:19,761 - INFO - Testing with 1 concurrent users...
+2026-09-19 21:47:19,771 - INFO - Starting load test: list_models - 1 concurrent, 500 total
+2026-09-19 21:47:20,893 - INFO - Completed 500/500 requests for list_models
+2026-09-19 21:47:20,896 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:20,896 - INFO -   Avg Response: 2.00ms
+2026-09-19 21:47:20,896 - INFO -   P95 Response: 3.46ms
+2026-09-19 21:47:20,896 - INFO -   P99 Response: 5.07ms
+2026-09-19 21:47:20,897 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:47:22,898 - INFO - Testing with 10 concurrent users...
+2026-09-19 21:47:22,899 - INFO - Starting load test: list_models - 10 concurrent, 500 total
+2026-09-19 21:47:23,696 - INFO - Completed 500/500 requests for list_models
+2026-09-19 21:47:23,699 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:23,699 - INFO -   Avg Response: 15.04ms
+2026-09-19 21:47:23,699 - INFO -   P95 Response: 25.61ms
+2026-09-19 21:47:23,699 - INFO -   P99 Response: 179.92ms
+2026-09-19 21:47:23,699 - INFO -   Sub-100ms Rate: 98.2%
+2026-09-19 21:47:25,701 - INFO - Testing with 50 concurrent users...
+2026-09-19 21:47:25,702 - INFO - Starting load test: list_models - 50 concurrent, 500 total
+2026-09-19 21:47:26,212 - INFO - Completed 500/500 requests for list_models
+2026-09-19 21:47:26,214 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:26,214 - INFO -   Avg Response: 42.82ms
+2026-09-19 21:47:26,214 - INFO -   P95 Response: 101.72ms
+2026-09-19 21:47:26,214 - INFO -   P99 Response: 136.92ms
+2026-09-19 21:47:26,214 - INFO -   Sub-100ms Rate: 94.2%
+2026-09-19 21:47:28,230 - INFO - Testing with 100 concurrent users...
+2026-09-19 21:47:28,233 - INFO - Starting load test: list_models - 100 concurrent, 500 total
+2026-09-19 21:47:28,703 - INFO - Completed 500/500 requests for list_models
+2026-09-19 21:47:28,705 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:28,706 - INFO -   Avg Response: 74.95ms
+2026-09-19 21:47:28,706 - INFO -   P95 Response: 205.79ms
+2026-09-19 21:47:28,706 - INFO -   P99 Response: 212.45ms
+2026-09-19 21:47:28,706 - INFO -   Sub-100ms Rate: 80.0%
+2026-09-19 21:47:30,712 - INFO - Testing with 500 concurrent users...
+2026-09-19 21:47:30,715 - INFO - Starting load test: list_models - 500 concurrent, 500 total
+2026-09-19 21:47:31,116 - INFO - Completed 500/500 requests for list_models
+2026-09-19 21:47:31,120 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:31,120 - INFO -   Avg Response: 173.90ms
+2026-09-19 21:47:31,120 - INFO -   P95 Response: 249.13ms
+2026-09-19 21:47:31,120 - INFO -   P99 Response: 252.73ms
+2026-09-19 21:47:31,120 - INFO -   Sub-100ms Rate: 5.8%
+2026-09-19 21:47:33,136 - INFO - 
+=== Testing endpoint: update_registry ===
+2026-09-19 21:47:33,136 - INFO - Testing with 1 concurrent users...
+2026-09-19 21:47:33,139 - INFO - Starting load test: update_registry - 1 concurrent, 500 total
+2026-09-19 21:47:34,104 - INFO - Completed 500/500 requests for update_registry
+2026-09-19 21:47:34,106 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:34,106 - INFO -   Avg Response: 1.85ms
+2026-09-19 21:47:34,106 - INFO -   P95 Response: 3.19ms
+2026-09-19 21:47:34,106 - INFO -   P99 Response: 4.12ms
+2026-09-19 21:47:34,106 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:47:36,080 - INFO - Testing with 10 concurrent users...
+2026-09-19 21:47:36,082 - INFO - Starting load test: update_registry - 10 concurrent, 500 total
+2026-09-19 21:47:36,833 - INFO - Completed 500/500 requests for update_registry
+2026-09-19 21:47:36,836 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:36,836 - INFO -   Avg Response: 14.22ms
+2026-09-19 21:47:36,836 - INFO -   P95 Response: 23.39ms
+2026-09-19 21:47:36,836 - INFO -   P99 Response: 145.77ms
+2026-09-19 21:47:36,836 - INFO -   Sub-100ms Rate: 98.0%
+2026-09-19 21:47:38,841 - INFO - Testing with 50 concurrent users...
+2026-09-19 21:47:38,843 - INFO - Starting load test: update_registry - 50 concurrent, 500 total
+2026-09-19 21:47:39,293 - INFO - Completed 500/500 requests for update_registry
+2026-09-19 21:47:39,296 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:39,296 - INFO -   Avg Response: 38.95ms
+2026-09-19 21:47:39,296 - INFO -   P95 Response: 155.36ms
+2026-09-19 21:47:39,296 - INFO -   P99 Response: 169.52ms
+2026-09-19 21:47:39,296 - INFO -   Sub-100ms Rate: 92.0%
+2026-09-19 21:47:41,320 - INFO - Testing with 100 concurrent users...
+2026-09-19 21:47:41,322 - INFO - Starting load test: update_registry - 100 concurrent, 500 total
+2026-09-19 21:47:42,169 - INFO - Completed 500/500 requests for update_registry
+2026-09-19 21:47:42,172 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:42,172 - INFO -   Avg Response: 125.93ms
+2026-09-19 21:47:42,173 - INFO -   P95 Response: 309.00ms
+2026-09-19 21:47:42,173 - INFO -   P99 Response: 329.96ms
+2026-09-19 21:47:42,173 - INFO -   Sub-100ms Rate: 57.4%
+2026-09-19 21:47:44,182 - INFO - Testing with 500 concurrent users...
+2026-09-19 21:47:44,187 - INFO - Starting load test: update_registry - 500 concurrent, 500 total
+2026-09-19 21:47:44,805 - INFO - Completed 500/500 requests for update_registry
+2026-09-19 21:47:44,807 - INFO -   Success Rate: 100.0%
+2026-09-19 21:47:44,807 - INFO -   Avg Response: 250.19ms
+2026-09-19 21:47:44,808 - INFO -   P95 Response: 330.99ms
+2026-09-19 21:47:44,808 - INFO -   P99 Response: 333.84ms
+2026-09-19 21:47:44,808 - INFO -   Sub-100ms Rate: 0.0%
+2026-09-19 21:47:46,813 - INFO - 
+=== Testing endpoint: predict_disease ===
+2026-09-19 21:47:46,813 - INFO - Testing with 1 concurrent users...
+2026-09-19 21:47:46,815 - INFO - Starting load test: predict_disease - 1 concurrent, 500 total
+2026-09-19 21:47:49,900 - INFO - Completed 500/500 requests for predict_disease
+2026-09-19 21:47:51,910 - INFO - Testing with 10 concurrent users...
+2026-09-19 21:47:51,912 - INFO - Starting load test: predict_disease - 10 concurrent, 500 total
+2026-09-19 21:47:52,821 - INFO - Completed 500/500 requests for predict_disease
+2026-09-19 21:47:54,830 - INFO - Testing with 50 concurrent users...
+2026-09-19 21:47:54,832 - INFO - Starting load test: predict_disease - 50 concurrent, 500 total
+2026-09-19 21:47:55,563 - INFO - Completed 500/500 requests for predict_disease
+2026-09-19 21:47:57,573 - INFO - Testing with 100 concurrent users...
+2026-09-19 21:47:57,579 - INFO - Starting load test: predict_disease - 100 concurrent, 500 total
+2026-09-19 21:47:58,201 - INFO - Completed 500/500 requests for predict_disease
+2026-09-19 21:48:00,206 - INFO - Testing with 500 concurrent users...
+2026-09-19 21:48:00,210 - INFO - Starting load test: predict_disease - 500 concurrent, 500 total
+2026-09-19 21:48:00,771 - INFO - Completed 500/500 requests for predict_disease
+2026-09-19 21:48:02,775 - INFO - 
+=== Testing endpoint: insurance_match ===
+2026-09-19 21:48:02,775 - INFO - Testing with 1 concurrent users...
+2026-09-19 21:48:02,776 - INFO - Starting load test: insurance_match - 1 concurrent, 500 total
+2026-09-19 21:48:28,428 - INFO - Completed 500/500 requests for insurance_match
+2026-09-19 21:48:28,430 - INFO -   Success Rate: 100.0%
+2026-09-19 21:48:28,430 - INFO -   Avg Response: 51.14ms
+2026-09-19 21:48:28,431 - INFO -   P95 Response: 60.41ms
+2026-09-19 21:48:28,431 - INFO -   P99 Response: 62.23ms
+2026-09-19 21:48:28,431 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:48:30,442 - INFO - Testing with 10 concurrent users...
+2026-09-19 21:48:30,443 - INFO - Starting load test: insurance_match - 10 concurrent, 500 total
+2026-09-19 21:48:31,170 - INFO - Completed 500/500 requests for insurance_match
+2026-09-19 21:48:31,172 - INFO -   Success Rate: 100.0%
+2026-09-19 21:48:31,172 - INFO -   Avg Response: 13.29ms
+2026-09-19 21:48:31,172 - INFO -   P95 Response: 59.03ms
+2026-09-19 21:48:31,172 - INFO -   P99 Response: 126.38ms
+2026-09-19 21:48:31,173 - INFO -   Sub-100ms Rate: 98.6%
+2026-09-19 21:48:33,186 - INFO - Testing with 50 concurrent users...
+2026-09-19 21:48:33,188 - INFO - Starting load test: insurance_match - 50 concurrent, 500 total
+2026-09-19 21:48:33,719 - INFO - Completed 500/500 requests for insurance_match
+2026-09-19 21:48:33,722 - INFO -   Success Rate: 100.0%
+2026-09-19 21:48:33,722 - INFO -   Avg Response: 44.48ms
+2026-09-19 21:48:33,722 - INFO -   P95 Response: 144.04ms
+2026-09-19 21:48:33,722 - INFO -   P99 Response: 152.14ms
+2026-09-19 21:48:33,722 - INFO -   Sub-100ms Rate: 91.8%
+2026-09-19 21:48:35,729 - INFO - Testing with 100 concurrent users...
+2026-09-19 21:48:35,731 - INFO - Starting load test: insurance_match - 100 concurrent, 500 total
+2026-09-19 21:48:36,334 - INFO - Completed 500/500 requests for insurance_match
+2026-09-19 21:48:36,366 - INFO -   Success Rate: 100.0%
+2026-09-19 21:48:36,366 - INFO -   Avg Response: 92.55ms
+2026-09-19 21:48:36,366 - INFO -   P95 Response: 235.02ms
+2026-09-19 21:48:36,366 - INFO -   P99 Response: 251.73ms
+2026-09-19 21:48:36,366 - INFO -   Sub-100ms Rate: 76.0%
+2026-09-19 21:48:38,385 - INFO - Testing with 500 concurrent users...
+2026-09-19 21:48:38,385 - INFO - Starting load test: insurance_match - 500 concurrent, 500 total
+2026-09-19 21:48:38,822 - INFO - Completed 500/500 requests for insurance_match
+2026-09-19 21:48:38,826 - INFO -   Success Rate: 100.0%
+2026-09-19 21:48:38,826 - INFO -   Avg Response: 206.92ms
+2026-09-19 21:48:38,826 - INFO -   P95 Response: 284.90ms
+2026-09-19 21:48:38,826 - INFO -   P99 Response: 315.99ms
+2026-09-19 21:48:38,827 - INFO -   Sub-100ms Rate: 0.2%
+2026-09-19 21:48:40,835 - INFO - 
+=== Testing endpoint: summarize_text ===
+2026-09-19 21:48:40,835 - INFO - Testing with 1 concurrent users...
+2026-09-19 21:48:40,836 - INFO - Starting load test: summarize_text - 1 concurrent, 500 total
+2026-09-19 21:49:06,638 - INFO - Completed 500/500 requests for summarize_text
+2026-09-19 21:49:06,642 - INFO -   Success Rate: 100.0%
+2026-09-19 21:49:06,642 - INFO -   Avg Response: 51.46ms
+2026-09-19 21:49:06,642 - INFO -   P95 Response: 60.46ms
+2026-09-19 21:49:06,642 - INFO -   P99 Response: 61.78ms
+2026-09-19 21:49:06,642 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:49:08,648 - INFO - Testing with 10 concurrent users...
+2026-09-19 21:49:08,650 - INFO - Starting load test: summarize_text - 10 concurrent, 500 total
+2026-09-19 21:49:09,259 - INFO - Completed 500/500 requests for summarize_text
+2026-09-19 21:49:09,261 - INFO -   Success Rate: 100.0%
+2026-09-19 21:49:09,262 - INFO -   Avg Response: 10.89ms
+2026-09-19 21:49:09,262 - INFO -   P95 Response: 50.43ms
+2026-09-19 21:49:09,262 - INFO -   P99 Response: 60.91ms
+2026-09-19 21:49:09,262 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:49:11,274 - INFO - Testing with 50 concurrent users...
+2026-09-19 21:49:11,276 - INFO - Starting load test: summarize_text - 50 concurrent, 500 total
+2026-09-19 21:49:11,878 - INFO - Completed 500/500 requests for summarize_text
+2026-09-19 21:49:11,881 - INFO -   Success Rate: 100.0%
+2026-09-19 21:49:11,881 - INFO -   Avg Response: 49.56ms
+2026-09-19 21:49:11,881 - INFO -   P95 Response: 103.46ms
+2026-09-19 21:49:11,881 - INFO -   P99 Response: 110.54ms
+2026-09-19 21:49:11,881 - INFO -   Sub-100ms Rate: 94.2%
+2026-09-19 21:49:13,894 - INFO - Testing with 100 concurrent users...
+2026-09-19 21:49:13,902 - INFO - Starting load test: summarize_text - 100 concurrent, 500 total
+2026-09-19 21:49:14,786 - INFO - Completed 500/500 requests for summarize_text
+2026-09-19 21:49:14,790 - INFO -   Success Rate: 100.0%
+2026-09-19 21:49:14,790 - INFO -   Avg Response: 130.63ms
+2026-09-19 21:49:14,790 - INFO -   P95 Response: 250.37ms
+2026-09-19 21:49:14,790 - INFO -   P99 Response: 254.79ms
+2026-09-19 21:49:14,791 - INFO -   Sub-100ms Rate: 44.0%
+2026-09-19 21:49:16,806 - INFO - Testing with 500 concurrent users...
+2026-09-19 21:49:16,810 - INFO - Starting load test: summarize_text - 500 concurrent, 500 total
+2026-09-19 21:49:17,377 - INFO - Completed 500/500 requests for summarize_text
+2026-09-19 21:49:17,380 - INFO -   Success Rate: 100.0%
+2026-09-19 21:49:17,380 - INFO -   Avg Response: 319.57ms
+2026-09-19 21:49:17,380 - INFO -   P95 Response: 416.87ms
+2026-09-19 21:49:17,381 - INFO -   P99 Response: 426.07ms
+2026-09-19 21:49:17,381 - INFO -   Sub-100ms Rate: 0.0%
+2026-09-19 21:49:19,397 - INFO - 
+=== Testing endpoint: reload_plans ===
+2026-09-19 21:49:19,397 - INFO - Testing with 1 concurrent users...
+2026-09-19 21:49:19,399 - INFO - Starting load test: reload_plans - 1 concurrent, 500 total
+2026-09-19 21:49:20,484 - INFO - Completed 500/500 requests for reload_plans
+2026-09-19 21:49:20,486 - INFO -   Success Rate: 100.0%
+2026-09-19 21:49:20,486 - INFO -   Avg Response: 2.10ms
+2026-09-19 21:49:20,486 - INFO -   P95 Response: 3.71ms
+2026-09-19 21:49:20,486 - INFO -   P99 Response: 5.19ms
+2026-09-19 21:49:20,486 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:49:22,499 - INFO - Testing with 10 concurrent users...
+2026-09-19 21:49:22,500 - INFO - Starting load test: reload_plans - 10 concurrent, 500 total
+2026-09-19 21:49:22,939 - INFO - Completed 500/500 requests for reload_plans
+2026-09-19 21:49:22,942 - INFO -   Success Rate: 100.0%
+2026-09-19 21:49:22,942 - INFO -   Avg Response: 7.93ms
+2026-09-19 21:49:22,942 - INFO -   P95 Response: 18.61ms
+2026-09-19 21:49:22,942 - INFO -   P99 Response: 74.32ms
+2026-09-19 21:49:22,942 - INFO -   Sub-100ms Rate: 100.0%
+2026-09-19 21:49:24,955 - INFO - Testing with 50 concurrent users...
+2026-09-19 21:49:24,957 - INFO - Starting load test: reload_plans - 50 concurrent, 500 total
+2026-09-19 21:49:25,440 - INFO - Completed 500/500 requests for reload_plans
+2026-09-19 21:49:25,442 - INFO -   Success Rate: 100.0%
+2026-09-19 21:49:25,442 - INFO -   Avg Response: 42.60ms
+2026-09-19 21:49:25,442 - INFO -   P95 Response: 160.04ms
+2026-09-19 21:49:25,442 - INFO -   P99 Response: 192.00ms
+2026-09-19 21:49:25,442 - INFO -   Sub-100ms Rate: 92.0%
+2026-09-19 21:49:27,454 - INFO - Testing with 100 concurrent users...
+2026-09-19 21:49:27,456 - INFO - Starting load test: reload_plans - 100 concurrent, 500 total
+2026-09-19 21:49:27,949 - INFO - Completed 500/500 requests for reload_plans
+2026-09-19 21:49:27,953 - INFO -   Success Rate: 100.0%
+2026-09-19 21:49:27,953 - INFO -   Avg Response: 80.31ms
+2026-09-19 21:49:27,953 - INFO -   P95 Response: 248.41ms
+2026-09-19 21:49:27,953 - INFO -   P99 Response: 258.11ms
+2026-09-19 21:49:27,953 - INFO -   Sub-100ms Rate: 75.6%
+2026-09-19 21:49:29,955 - INFO - Testing with 500 concurrent users...
+2026-09-19 21:49:29,957 - INFO - Starting load test: reload_plans - 500 concurrent, 500 total
+2026-09-19 21:49:30,518 - INFO - Completed 500/500 requests for reload_plans
+2026-09-19 21:49:30,520 - INFO -   Success Rate: 100.0%
+2026-09-19 21:49:30,521 - INFO -   Avg Response: 238.11ms
+2026-09-19 21:49:30,521 - INFO -   P95 Response: 282.68ms
+2026-09-19 21:49:30,521 - INFO -   P99 Response: 292.09ms
+2026-09-19 21:49:30,521 - INFO -   Sub-100ms Rate: 0.0%
+C:\Users\LookO\CareNavigator-AI-fresh\backend\benchmarks\benchmark.py:406: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  axes[0, 1].set_xticklabels(axes[0, 1].get_xticklabels(), rotation=45)
+2026-09-19 21:49:37,118 - INFO - Benchmark report generated in: benchmark_results_final
+
+============================================================
+BENCHMARK COMPLETE - RESUME VALIDATION SUMMARY
+============================================================
+Sub-100ms Response Rate: 72.7%
+Meets Sub-100ms Claim:  NO
+Handles 1000+ Concurrent:  NO
+Overall Success Rate: 88.9%
+
+Detailed report saved to: benchmark_results_final/
