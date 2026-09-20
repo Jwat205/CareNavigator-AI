@@ -1,0 +1,51 @@
+Hitting 9 endpoints on http://carenav-prod-alb-38590339.us-east-1.elb.amazonaws.com (500 requests per endpoint per concurrency level, /predict excluded)
+--- concurrency=50 ---
+  GET  /                concurrency=  50 total=500 errors=  0 avg=   19.7ms p50=   16.4ms p95=   47.7ms p99=   63.5ms sub100ms=100.0%
+  GET  /health          concurrency=  50 total=500 errors=  0 avg=   17.9ms p50=   16.8ms p95=   29.4ms p99=   30.6ms sub100ms=100.0%
+  GET  /status          concurrency=  50 total=500 errors=  0 avg=   24.0ms p50=   22.3ms p95=   42.7ms p99=   48.1ms sub100ms=100.0%
+  GET  /models          concurrency=  50 total=500 errors=  0 avg=   23.3ms p50=   23.6ms p95=   36.5ms p99=   38.5ms sub100ms=100.0%
+  GET  /metrics         concurrency=  50 total=500 errors=  0 avg=   33.2ms p50=   16.4ms p95=  172.3ms p99=  177.7ms sub100ms= 90.0%
+  GET  /cache/stats     concurrency=  50 total=500 errors=  0 avg=   22.8ms p50=   21.4ms p95=   39.9ms p99=   41.0ms sub100ms=100.0%
+  GET  /performance     concurrency=  50 total=500 errors=  0 avg=   25.8ms p50=   23.4ms p95=   50.4ms p99=   52.5ms sub100ms=100.0%
+  POST /insurance-match/ concurrency=  50 total=500 errors=  0 avg=   25.9ms p50=   24.2ms p95=   51.5ms p99=   53.5ms sub100ms=100.0%
+  POST /summary         concurrency=  50 total=500 errors=  0 avg=   23.6ms p50=   23.9ms p95=   36.6ms p99=   37.7ms sub100ms=100.0%
+--- concurrency=100 ---
+  GET  /                concurrency= 100 total=500 errors=  0 avg=   79.0ms p50=   45.9ms p95=  197.4ms p99=  317.0ms sub100ms= 68.4%
+  GET  /health          concurrency= 100 total=500 errors=  0 avg=   60.8ms p50=   33.5ms p95=  229.0ms p99=  237.6ms sub100ms= 80.0%
+  GET  /status          concurrency= 100 total=500 errors=  0 avg=   43.9ms p50=   43.9ms p95=   54.4ms p99=   56.9ms sub100ms=100.0%
+  GET  /models          concurrency= 100 total=500 errors=  0 avg=   42.4ms p50=   40.8ms p95=   57.9ms p99=   61.2ms sub100ms=100.0%
+  GET  /metrics         concurrency= 100 total=500 errors=  0 avg=   59.8ms p50=   34.7ms p95=  194.1ms p99=  198.5ms sub100ms= 82.4%
+  GET  /cache/stats     concurrency= 100 total=500 errors=  0 avg=   71.3ms p50=   44.8ms p95=  219.5ms p99=  242.0ms sub100ms= 80.0%
+  GET  /performance     concurrency= 100 total=500 errors=  0 avg=   46.6ms p50=   45.5ms p95=   61.4ms p99=   62.9ms sub100ms=100.0%
+  POST /insurance-match/ concurrency= 100 total=500 errors=  0 avg=   45.2ms p50=   45.5ms p95=   60.2ms p99=   62.7ms sub100ms=100.0%
+  POST /summary         concurrency= 100 total=500 errors=  0 avg=   71.5ms p50=   47.4ms p95=  219.3ms p99=  224.7ms sub100ms= 80.0%
+--- concurrency=500 ---
+  GET  /                concurrency= 500 total=500 errors=  0 avg=  286.7ms p50=  275.8ms p95=  391.7ms p99=  436.1ms sub100ms=  0.0%
+  GET  /health          concurrency= 500 total=500 errors=  0 avg=  192.7ms p50=  145.6ms p95=  295.5ms p99=  300.8ms sub100ms= 10.0%
+  GET  /status          concurrency= 500 total=500 errors=  0 avg=  224.7ms p50=  159.0ms p95=  361.2ms p99=  365.3ms sub100ms=  8.6%
+  GET  /models          concurrency= 500 total=500 errors=  0 avg=  213.2ms p50=  161.5ms p95=  318.3ms p99=  320.2ms sub100ms=  7.4%
+  GET  /metrics         concurrency= 500 total=500 errors=  0 avg=  188.7ms p50=  130.9ms p95=  298.3ms p99=  302.3ms sub100ms= 13.6%
+  GET  /cache/stats     concurrency= 500 total=500 errors=  0 avg=  227.3ms p50=  182.8ms p95=  342.9ms p99=  346.8ms sub100ms=  9.2%
+  GET  /performance     concurrency= 500 total=500 errors=  0 avg=  232.7ms p50=  191.5ms p95=  333.6ms p99=  337.8ms sub100ms=  3.8%
+  POST /insurance-match/ concurrency= 500 total=500 errors=  0 avg=  222.5ms p50=  223.4ms p95=  244.3ms p99=  249.1ms sub100ms=  0.0%
+  POST /summary         concurrency= 500 total=500 errors=  0 avg=  392.8ms p50=  398.8ms p95=  417.3ms p99=  421.6ms sub100ms=  0.0%
+--- concurrency=1000 ---
+  GET  /                concurrency=1000 total=500 errors=  0 avg=  244.1ms p50=  254.9ms p95=  276.7ms p99=  279.0ms sub100ms=  0.0%
+  GET  /health          concurrency=1000 total=500 errors=  0 avg=  178.0ms p50=  121.9ms p95=  289.7ms p99=  294.7ms sub100ms= 19.6%
+  GET  /status          concurrency=1000 total=500 errors=  0 avg=  219.8ms p50=  214.7ms p95=  316.2ms p99=  322.4ms sub100ms=  4.4%
+  GET  /models          concurrency=1000 total=500 errors=  0 avg=  215.7ms p50=  158.8ms p95=  329.9ms p99=  335.6ms sub100ms=  8.6%
+  GET  /metrics         concurrency=1000 total=500 errors=  0 avg=  180.7ms p50=  127.4ms p95=  287.3ms p99=  290.2ms sub100ms= 15.4%
+  GET  /cache/stats     concurrency=1000 total=500 errors=  0 avg=  137.7ms p50=  146.0ms p95=  167.8ms p99=  170.6ms sub100ms= 13.8%
+  GET  /performance     concurrency=1000 total=500 errors=  0 avg=  332.4ms p50=  345.0ms p95=  373.7ms p99=  378.6ms sub100ms=  1.6%
+  POST /insurance-match/ concurrency=1000 total=500 errors=  0 avg=  244.9ms p50=  250.6ms p95=  269.1ms p99=  273.4ms sub100ms=  0.0%
+  POST /summary         concurrency=1000 total=500 errors=  0 avg=  374.8ms p50=  374.9ms p95=  396.0ms p99=  400.8ms sub100ms=  0.0%
+--- concurrency=1500 ---
+  GET  /                concurrency=1500 total=500 errors=  0 avg=  274.3ms p50=  285.1ms p95=  306.9ms p99=  309.7ms sub100ms=  0.0%
+  GET  /health          concurrency=1500 total=500 errors=  0 avg=  184.9ms p50=  132.0ms p95=  291.6ms p99=  296.0ms sub100ms= 13.6%
+  GET  /status          concurrency=1500 total=500 errors=  0 avg=  231.4ms p50=  194.0ms p95=  330.0ms p99=  342.5ms sub100ms=  4.2%
+  GET  /models          concurrency=1500 total=500 errors=  0 avg=  188.0ms p50=  149.5ms p95=  325.8ms p99=  343.4ms sub100ms= 22.2%
+  GET  /metrics         concurrency=1500 total=500 errors=  0 avg=  193.3ms p50=  137.5ms p95=  297.0ms p99=  301.6ms sub100ms= 10.8%
+  GET  /cache/stats     concurrency=1500 total=500 errors=  0 avg=  133.1ms p50=  136.9ms p95=  161.3ms p99=  164.0ms sub100ms= 10.2%
+  GET  /performance     concurrency=1500 total=500 errors=  0 avg=  313.0ms p50=  323.3ms p95=  360.6ms p99=  365.7ms sub100ms=  3.4%
+  POST /insurance-match/ concurrency=1500 total=500 errors=  0 avg=  221.3ms p50=  223.3ms p95=  242.9ms p99=  246.5ms sub100ms=  0.0%
+  POST /summary         concurrency=1500 total=500 errors=  0 avg=  381.2ms p50=  383.5ms p95=  399.9ms p99=  403.4ms sub100ms=  0.0%

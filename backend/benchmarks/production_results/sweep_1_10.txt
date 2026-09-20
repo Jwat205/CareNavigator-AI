@@ -1,0 +1,24 @@
+Hitting 9 endpoints on http://carenav-prod-alb-38590339.us-east-1.elb.amazonaws.com (500 requests per endpoint per concurrency level, /predict excluded)
+--- concurrency=1 ---
+  GET  /                concurrency=   1 total=500 errors= 14 avg=  471.8ms p50=    2.6ms p95=    3.0ms p99=16000.5ms sub100ms= 97.0%
+       sample errors: ['ERR:', 'ERR:', 'ERR:']
+  GET  /health          concurrency=   1 total=500 errors=  0 avg=    2.4ms p50=    2.5ms p95=    2.9ms p99=    3.0ms sub100ms=100.0%
+  GET  /status          concurrency=   1 total=500 errors=  0 avg=    2.6ms p50=    2.7ms p95=    3.1ms p99=    3.4ms sub100ms=100.0%
+  GET  /models          concurrency=   1 total=500 errors=  0 avg=    2.6ms p50=    2.6ms p95=    3.2ms p99=    3.5ms sub100ms=100.0%
+  GET  /metrics         concurrency=   1 total=500 errors=  0 avg=    2.7ms p50=    2.6ms p95=    3.1ms p99=   12.9ms sub100ms=100.0%
+  GET  /cache/stats     concurrency=   1 total=500 errors=  0 avg=    3.3ms p50=    2.9ms p95=    6.7ms p99=   11.5ms sub100ms=100.0%
+  GET  /performance     concurrency=   1 total=500 errors=  0 avg=    2.9ms p50=    3.0ms p95=    3.8ms p99=    4.5ms sub100ms=100.0%
+  POST /insurance-match/ concurrency=   1 total=500 errors=  0 avg=    2.9ms p50=    3.0ms p95=    3.5ms p99=    3.9ms sub100ms=100.0%
+  POST /summary         concurrency=   1 total=500 errors=  0 avg=    2.9ms p50=    2.9ms p95=    3.5ms p99=    3.8ms sub100ms=100.0%
+--- concurrency=10 ---
+  GET  /                concurrency=  10 total=500 errors=  0 avg=    3.8ms p50=    3.5ms p95=    6.0ms p99=   10.6ms sub100ms=100.0%
+  GET  /health          concurrency=  10 total=500 errors=  0 avg=    3.8ms p50=    3.7ms p95=    5.4ms p99=    6.4ms sub100ms=100.0%
+  GET  /status          concurrency=  10 total=500 errors=  0 avg=    5.2ms p50=    5.0ms p95=    8.3ms p99=   11.9ms sub100ms=100.0%
+  GET  /models          concurrency=  10 total=500 errors=  0 avg=    4.7ms p50=    4.6ms p95=    6.8ms p99=    8.0ms sub100ms=100.0%
+  GET  /metrics         concurrency=  10 total=500 errors=  0 avg=    3.7ms p50=    3.7ms p95=    5.4ms p99=    5.9ms sub100ms=100.0%
+  GET  /cache/stats     concurrency=  10 total=500 errors=  0 avg=    4.8ms p50=    4.6ms p95=    7.0ms p99=    9.6ms sub100ms=100.0%
+  GET  /performance     concurrency=  10 total=500 errors=  0 avg=    5.4ms p50=    5.4ms p95=    8.5ms p99=    9.4ms sub100ms=100.0%
+  POST /insurance-match/ concurrency=  10 total=500 errors=  0 avg=    5.5ms p50=    5.2ms p95=    9.2ms p99=   10.4ms sub100ms=100.0%
+  POST /summary         concurrency=  10 total=500 errors=  0 avg=    5.6ms p50=    5.2ms p95=    9.2ms p99=   14.1ms sub100ms=100.0%
+
+[exited with code 0]
